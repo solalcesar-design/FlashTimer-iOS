@@ -1,31 +1,22 @@
 name: Build iOS Project
 on: [push, workflow_dispatch]
-
 jobs:
   build:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: Install Briefcase
+        run: pip install briefcase
+      - name: Create & Build
         run: |
-          python -m pip install --upgrade pip
-          pip install briefcase
-
-      - name: Create iOS App
-        run: briefcase create ios --no-input
-
-      - name: Build iOS App
-        run: briefcase build ios --no-input
-
-      - name: Upload Xcode Project
+          briefcase create ios --no-input
+          briefcase build ios --no-input
+      - name: Upload Project
         uses: actions/upload-artifact@v4
         with:
-          name: FlashTimer-Xcode-Project
-          # On récupère tout le dossier de build iOS
+          name: FlashTimer-Xcode
           path: build/flashtimer/ios/xcode/
