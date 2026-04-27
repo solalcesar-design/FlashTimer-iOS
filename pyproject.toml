@@ -1,0 +1,36 @@
+[tool.briefcase]
+project_name = "FlashTimer"
+bundle = "com.solal"
+version = "0.0.1"
+url = "https://github.com/solalcesar-design"
+license.file = "LICENSE"
+author = "solalcesar-design"
+author_email = "solalcesar@gmail.com"
+
+[tool.briefcase.app.flashtimer]
+formal_name = "FlashTimer"
+description = "Minuteur de lampe"
+long_description = "Application simple de minuteur pour lampe torche."
+sources = ["src/flashtimer"]
+
+[tool.briefcase.app.flashtimer.macOS]
+requires = [
+    "toga-cocoa~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+
+[tool.briefcase.app.flashtimer.iOS]
+requires = [
+    "toga-iOS~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+# Obligatoire pour que l'iPhone autorise l'accès à la lampe
+info_plist = { "NSCameraUsageDescription" = "L'application utilise la LED pour la fonction lampe torche." }
+
+[tool.briefcase.app.flashtimer.android]
+requires = [
+    "toga-android~=0.5.0",
+]
+permissions = ["android.permission.CAMERA", "android.permission.FLASHLIGHT"]
+features = ["android.hardware.camera.flash"]
+base_theme = "Theme.MaterialComponents.Light.DarkActionBar"
