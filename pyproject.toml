@@ -10,7 +10,7 @@ author_email = "solalcesar@gmail.com"
 [tool.briefcase.app.flashtimer]
 formal_name = "FlashTimer"
 description = "Minuteur de lampe"
-long_description = "Application simple de minuteur pour lampe torche."
+long_description = "Application de minuteur pour lampe torche."
 sources = ["src/flashtimer"]
 
 [tool.briefcase.app.flashtimer.macOS]
@@ -24,7 +24,7 @@ requires = [
     "toga-iOS~=0.5.0",
     "std-nslog~=1.0.3",
 ]
-# Obligatoire pour que l'iPhone autorise l'accès à la lampe
+# Cette ligne est indispensable pour l'iPhone :
 info_plist = { "NSCameraUsageDescription" = "L'application utilise la LED pour la fonction lampe torche." }
 
 [tool.briefcase.app.flashtimer.android]
