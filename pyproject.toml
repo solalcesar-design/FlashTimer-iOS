@@ -14,13 +14,23 @@ long_description = "Application de minuteur pour lampe torche."
 sources = ["src/flashtimer"]
 
 [tool.briefcase.app.flashtimer.macOS]
-requires = ["toga-cocoa~=0.5.0", "std-nslog~=1.0.3"]
+requires = [
+    "toga-cocoa~=0.5.0",
+    "std-nslog~=1.0.3",
+]
 
 [tool.briefcase.app.flashtimer.iOS]
-requires = ["toga-iOS~=0.5.0", "std-nslog~=1.0.3"]
+requires = [
+    "toga-iOS~=0.5.0",
+    "std-nslog~=1.0.3",
+]
+# Autorisation pour la lampe sur iPhone
 info_plist = { "NSCameraUsageDescription" = "L'application utilise la LED pour la fonction lampe torche." }
 
 [tool.briefcase.app.flashtimer.android]
-requires = ["toga-android~=0.5.0"]
+requires = [
+    "toga-android~=0.5.0",
+]
 permissions = ["android.permission.CAMERA", "android.permission.FLASHLIGHT"]
 features = ["android.hardware.camera.flash"]
+base_theme = "Theme.MaterialComponents.Light.DarkActionBar"
