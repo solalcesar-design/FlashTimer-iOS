@@ -1,4 +1,4 @@
-name: Build iOS IPA
+name: Build iOS Project
 on: [push, workflow_dispatch]
 
 jobs:
@@ -23,11 +23,9 @@ jobs:
       - name: Build iOS App
         run: briefcase build ios --no-input
 
-      - name: Package iOS
-        run: briefcase package ios --adhoc --no-input
-
-      - name: Upload IPA
+      - name: Upload Xcode Project
         uses: actions/upload-artifact@v4
         with:
-          name: FlashTimer-IPA
-          path: build/**/*.ipa
+          name: FlashTimer-Xcode-Project
+          # On récupère tout le dossier de build iOS
+          path: build/flashtimer/ios/xcode/
