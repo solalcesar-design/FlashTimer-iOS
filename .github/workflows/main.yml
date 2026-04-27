@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: FlashTimer-IPA
-          path: build/flashtimer/ios/xcode/build/Release-iphoneos/*.ipa
+          path: build/**/*.ipa
